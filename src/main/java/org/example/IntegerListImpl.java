@@ -1,10 +1,11 @@
 package org.example;
 
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public class IntegerListImpl implements IntegerList {
 
-    private static final int INITIAL_SIZE = 15;
+    private static final int INITIAL_SIZE = 10;
 
     private Integer[] data;
     private int capacity;
@@ -38,6 +39,13 @@ public class IntegerListImpl implements IntegerList {
         data[index] = item;
         capacity++;
         return item;
+    }
+
+
+    public boolean addArr(Integer[] arrey) {
+        System.arraycopy(arrey, 0, data, 0, arrey.length);
+        capacity = arrey.length;
+        return true;
     }
 
     @Override
@@ -161,7 +169,8 @@ public class IntegerListImpl implements IntegerList {
         return result;
     }
 
-    private void sortInsertion(Integer[] arr) {
+    @Override
+    public void sortInsertion(Integer[] arr) {
         for (int i = 1; i < arr.length; i++) {
             int temp = arr[i];
             int j = i;
